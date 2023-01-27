@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,6 +31,15 @@ public class Main {
             s = in.next();
             testo.add(s);
         }
-        System.out.println(testo);
+        GenerazioneTesto gt = new GenerazioneTesto();
+        gt.train(testo);
+        ArrayList<String> testoGenerato = gt.generate(500);
+        StringBuilder output = new StringBuilder();
+        for (String word : testoGenerato) {
+            output.append(word).append(' ');
+        }
+        FileWriter out = new FileWriter("output.txt");
+        out.write(output.toString());
+        out.close();
     }
 }
