@@ -26,9 +26,10 @@ public class GenerazioneTesto {
         suffixes = new ArrayList<>(prefixMap.get(keys.get((int)(Math.random()*keys.size()))));
         text.add(suffixes.get((int)(Math.random()*suffixes.size())));
         //Generazione delle parole successive
+        ArrayList<String> s = new ArrayList<>();
         for (int i = 1; i < maxSize; i++) {
-            suffixes = new ArrayList<>(prefixMap.get(text.get(i-1)));
-            text.add(suffixes.get((int)(Math.random()*suffixes.size())));
+            s.addAll(prefixMap.get(text.get(i-1)));
+            text.add(s.get((int)(Math.random()*s.size())));
         }
         return text;
     }
